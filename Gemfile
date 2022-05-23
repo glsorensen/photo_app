@@ -58,7 +58,7 @@ group :test do
   gem 'launchy'
   gem 'webmock'
   gem 'vcr'
-  gem 'orderly
+  gem 'orderly'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
