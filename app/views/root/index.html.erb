@@ -1,0 +1,9 @@
+<h1>Flickr Photo Search</h1>
+
+<h4>Search for photos</h4>
+
+<%= form_with url: "/results", method: :post, local: true do |f| %>
+  <%= f.label :keyword %>
+  <%= f.text_field :keyword %>
+  <%= f.submit "SEARCH" %>
+<% end %>
