@@ -13,5 +13,11 @@ class FlickrFacade
     data_server["photos"]["photo"].map do |photo|
       photo["server"]
     end
+
+    data_farm = FlickrService.search_images(keyword)
+
+    data_farm["photos"]["photo"].map do |photo|
+      photo["farm"]
+    end
   end
 end
