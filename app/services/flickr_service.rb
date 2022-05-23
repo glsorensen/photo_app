@@ -11,6 +11,7 @@ class FlickrService
       faraday.params['nojsoncallback'] = '1'
       faraday.params['safe_search'] = '1'
       faraday.params['text'] = keyword
+      faraday.params['per_page'] = '10'
     end
 
     response = connection.get
