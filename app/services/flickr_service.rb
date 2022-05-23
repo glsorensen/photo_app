@@ -2,16 +2,18 @@ require 'faraday'
 require 'json'
 
 class FlickrService
-  def self.connection(search)
-    Faraday.new('https://www.flickr.com/services/rest/') do |faraday|
+  def self.search_images(keyword)
+    url = 'https://api.flickr.com/services/rest'
+    connection = Faraday.new(url) do |faraday|
+      faraday.params['api_key'] = ENV['flickr_key']
       faraday.params['method'] = 'flickr.photos.search'
-      faraday.params['api_key'] = ENV['flickr_api_key']
       faraday.params['format'] = 'json'
       faraday.params['nojsoncallback'] = '1'
       faraday.params['safe_search'] = '1'
-      faraday.params['per_page'] = '10'
-      faraday.params['text'] = search
+      faraday.params['text'] = keyword
     end
+
+    response = connection.get
+    JSON.parse(response.body)
   end
-  JSON.parse(response.body, symbolize_names: true)
 end
