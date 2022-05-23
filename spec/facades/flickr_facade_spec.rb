@@ -14,6 +14,12 @@ RSpec.describe FlickrFacade do
       expect(data_server.count).to eq(10)
 
     end
+    it 'will return the photo farm', :vcr do
+      data_farm = FlickrFacade.search_images('dogs')
+      expect(data_farm).to be_a(Array)
+      expect(data_farm.count).to eq(10)
+
+    end
   end
   describe 'sad path', :vcr do
   end
